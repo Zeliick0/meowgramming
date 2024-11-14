@@ -7,13 +7,12 @@ int main(){
     int ext = 0;
     int choice;
     int green = 0;
-
     while (ext == 0) {
     
     printf("What do you wanna do?\n 1) Add a tea\n 2) Show tea info\n 3) Amount of green teas\n 4) Sort by num\n 5) Sort by name\n 6) Sort by price\n 7) Save to file\n 8) Find by name\n 9) Remove by number\n 10) Save to bin\n 11) Print from bin\n 12) Exit\n");
     scanf("%d", &choice);
     flushInput();
-    
+        
     switch (choice) {
         case 1:
             tearr[count] = addTea(count);
