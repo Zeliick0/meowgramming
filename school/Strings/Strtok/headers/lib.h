@@ -8,6 +8,7 @@
 #include <stdlib.h>
 
 void flushInput();
-void saveWords(char slovicka[]);
+void saveWords();
 void printWords();
+void countWords();
 #endif

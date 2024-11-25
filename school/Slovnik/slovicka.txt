@@ -1,0 +1,9 @@
+ohen;fire;1;
+vzduch;air;1;
+země;earth;1;
+voda;water;1;
+domov;home;2;
+kuchyn;kitchen;2;
+loznice;bedroom;2;
+obyvak;living room;2;
+
