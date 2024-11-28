@@ -165,7 +165,7 @@ void randomTest(Word dictionary[], int count){
 
     for(int i = 0; i < amount; i++){
         do{
-            random_num = rand() & count;
+            random_num = rand() % count;
         } while (used[random_num] == 1);
 
         used[random_num] = 1;
