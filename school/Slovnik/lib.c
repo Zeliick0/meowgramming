@@ -137,8 +137,6 @@ void addWord(const char* filename, int count, Word dictionary[]){
     fprintf(f,"%s;%s;%d;\n", cz, en, lesson);
     fclose(f);
 
-    count = loadDictionary(filename, dictionary);
-
     printf("Word was successfully added\n");
 }
 
