@@ -143,10 +143,11 @@ void addWord(const char* filename, int count, Word dictionary[]){
 }
 
 void randomTest(Word dictionary[], int count){
-    int amount = 0;
+    int amount;
     int correct = 0;
     char answer[N];
-
+    int random_num;
+    int used[count];
 
     printf("How many words do you want to test (max %d) \n", count);
     scanf("%d", &amount);
@@ -157,12 +158,17 @@ void randomTest(Word dictionary[], int count){
         return;
     }
 
-    int used[amount];
+    for(int i = 0; i < count; i++){
+        used[i] = 0;
+    }
     srand(time(NULL));
 
     for(int i = 0; i < amount; i++){
-        int random_num = rand() % count;
-        used[i] = random_num;
+        do{
+            random_num = rand() & count;
+        } while (used[random_num] == 1);
+
+        used[random_num] = 1;
 
         printf("Translate the word: \"%s\":  ", dictionary[random_num].czech);
         fgets(answer,N,stdin);
@@ -173,7 +179,7 @@ void randomTest(Word dictionary[], int count){
             printf("Correct!\n");
             correct++;
         } else {
-            printf("Incorrect, the correct answer is \"%s\" \n", dictionary[random_num].english);
+            printf("\nIncorrect, the correct answer is \"%s\" \n", dictionary[random_num].english);
         }
     }
 

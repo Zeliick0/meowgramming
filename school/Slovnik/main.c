@@ -1,4 +1,5 @@
 #include "headers/lib.h"
+#include <stdio.h>
 
 int main(){
     int ext = 0;
@@ -11,6 +12,8 @@ int main(){
     printf("What file do you want to work with?\n");
     fgets(filename,N,stdin);
     filename[strcspn(filename, "\n")] = '\0';
+
+    printf("\nDon't forget to load your dictionary!\n\n");
 
     while(ext == 0){
         printf("What do you wanna do?\n 1) Load dictionary\n 2) Translate a word\n 3) Test from a lesson\n 4) Count words\n 5) Add a word\n 6) Random test\n 7) Edit or delete\n 8) Exit\n");
