@@ -3,13 +3,13 @@
 #include <string.h>
 #include <time.h>
 
-// Function for resetting scanf
+// Function for clearing the scanf (stdin) buffer so any unwanted behaviour doesn't happen
 void flushInput() {
     int c;
     while ((c = getchar()) != '\n' && c != EOF);
 }
 
-//Function that converts the whole string to lowercase for handling user inputs correctly
+//Converts a string to lowercase for working comparation
 void to_lowercase(char *string) {
     while (*string) {
         if (*string >= 'A' && *string <= 'Z') {
@@ -19,7 +19,8 @@ void to_lowercase(char *string) {
     }
 }
 
-// Function that takes a correctly formatted text file and fills an array of structs with the values
+//Reads a correctly formatted text file czword;enword;lesson;
+// !The words in the file have to be lowercase for the program to work properly!
 int loadDictionary(const char* filename, Word dictionary[]) {
     FILE *file = fopen(filename, "r");
     if (!file) return 0;
