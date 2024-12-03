@@ -18,13 +18,13 @@ void to_lowercase(char *string) {
 }
 
 int loadDictionary(const char* filename, Word dictionary[]) {
-    FILE *file = fopen(filename, "r");
-    if (!file) return 0;
+    FILE *f = fopen(filename, "r");
+    if (!f) return 0;
     int count = 0;
-    while (fscanf(file, "%[^;];%[^;];%d;\n", dictionary[count].czech, dictionary[count].english, &dictionary[count].lecture) == 3) {
+    while (fscanf(f, "%[^;];%[^;];%d;\n", dictionary[count].czech, dictionary[count].english, &dictionary[count].lecture) == 3) {
         count++;
     }
-    fclose(file);
+    fclose(f);
     return count;
 }
 
