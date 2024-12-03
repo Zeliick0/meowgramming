@@ -1,12 +1,12 @@
 #include "lib.h"
 #include <stdio.h>
 
-int get_length(){
+int get_length(const char *filename){
     int lines = 0;
     const int buffer = 32;
     char line_cont[buffer]; 
     
-    FILE *f = fopen("input.txt", "r");
+    FILE *f = fopen(filename, "r");
     
     while(fgets(line_cont, buffer, f)) {
         lines++;
@@ -21,6 +21,7 @@ void fillarrays(int *array1, int *array2, int length) {
     for(int i = 0; i < length; i++){
         fscanf(f, "%d %d", &array1[i], &array2[i]);
     }
+    fclose(f);
 }
 
 void sortarray(int *array, int length) {
