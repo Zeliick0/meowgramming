@@ -49,15 +49,19 @@ int distance(int *array1, int *array2, int length) {
     return final_dist;
 }
 
-int matches(int *array1, int length, int num){
-    int count;
+int matches(int *array1, int *array2, int length){
+    int score = 0;
 
     for(int i = 0; i < length;i++){
-        if (array2[i] == num){
-            count++;
+        int count = 0;
+        for(int j = 0; j < length; j++){
+            if (array2[j] == array1[i]){
+                count++;
         }
+        }
+    score = score + (count * array1[i]);
     }
-    
-    
+
+    return score;
 }
 

@@ -11,8 +11,10 @@ fillarrays(left, right, length);
 sortarray(left, length);
 sortarray(right, length);
 
-printf("The distance between the lists is %d", distance(left, right, length));
-
+//Part 1
+printf("The distance between the lists is %d\n", distance(left, right, length));
+//Part 2
+printf("The score is %d\n", matches(left,right,length));
 
 free(left);
 free(right);
