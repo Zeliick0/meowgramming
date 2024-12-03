@@ -14,7 +14,8 @@ sortarray(right, length);
 printf("The distance between the lists is %d", distance(left, right, length));
 
 
-
+free(left);
+free(right);
 
 return 0;
 }

@@ -38,7 +38,7 @@ void sortarray(int *array, int length) {
 }
 
 int distance(int *array1, int *array2, int length) {
-    int final_dist;
+    int final_dist = 0;
     int temp;
 
     for(int i = 0; i < length;i++){
