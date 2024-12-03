@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <strings.h>
 #include <string.h>
+#define buffer 32
 
 int is_monotone(int prev, int cur);
 int safe_reps(const char *filename);

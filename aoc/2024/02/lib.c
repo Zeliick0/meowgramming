@@ -1,7 +1,6 @@
 #include "lib.h"
 #include <stdio.h>
 #include <string.h>
-#define buffer 32
 
 int is_monotone(int prev, int cur){
     if (cur > prev) {

@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#define buffer 32
 
 int get_length(const char *filename);
 void fillarrays(int *array1, int *array2, int length);

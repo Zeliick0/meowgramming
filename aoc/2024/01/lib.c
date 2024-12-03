@@ -3,12 +3,11 @@
 
 int get_length(const char *filename){
     int lines = 0;
-    const int buffer = 32;
-    char line_cont[buffer]; 
+    char line_content[buffer]; 
     
     FILE *f = fopen(filename, "r");
     
-    while(fgets(line_cont, buffer, f)) {
+    while(fgets(line_content, buffer, f)) {
         lines++;
     }
     fclose(f);
