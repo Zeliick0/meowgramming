@@ -3,11 +3,13 @@
 #include <string.h>
 #include <time.h>
 
+// Function for clearing the scanf (stdin) buffer so any unwanted behaviour doesn't happen
 void flushInput() {
     int c;
     while ((c = getchar()) != '\n' && c != EOF);
 }
 
+//Converts a string to lowercase for working comparation
 void to_lowercase(char *string) {
     while (*string) {
         if (*string >= 'A' && *string <= 'Z') {
@@ -17,6 +19,8 @@ void to_lowercase(char *string) {
     }
 }
 
+//Reads a correctly formatted text file czword;enword;lesson;
+// !The words in the file have to be lowercase for the program to work properly!
 int loadDictionary(const char* filename, Word dictionary[]) {
     FILE *f = fopen(filename, "r");
     if (!f) return 0;
@@ -28,6 +32,7 @@ int loadDictionary(const char* filename, Word dictionary[]) {
     return count;
 }
 
+//Function that takes user input and translates it
 void Translate(Word dictionary[], int count) {
     char word[N];
 
@@ -48,6 +53,7 @@ void Translate(Word dictionary[], int count) {
     printf("Word not found.\n");
 }
 
+//Function that takes a number as user input and tests the user from the according words
 void lesson_test(Word dictionary[], int count){
     int total = 0, correct = 0;
     int lesson;   
@@ -80,6 +86,7 @@ void lesson_test(Word dictionary[], int count){
     }
 }
 
+//Function that counts all words in a lesson which the user inputs
 int wordsInLesson(Word dictionary[], int count){
     char lesson[10];
     int word_count = 0;
@@ -101,6 +108,7 @@ int wordsInLesson(Word dictionary[], int count){
     }
 }
 
+//Adds a word to the struct and then rewrites the file to add it to it as well
 void addWord(const char* filename, int count, Word dictionary[]){
     char cz[N], en[N];
     int lesson;
@@ -140,6 +148,7 @@ void addWord(const char* filename, int count, Word dictionary[]){
     printf("Word was successfully added\n");
 }
 
+//Function that tests the user from the amount of words they input and keeps track of their success rate
 void randomTest(Word dictionary[], int count){
     int amount;
     int correct = 0;
@@ -188,6 +197,7 @@ void randomTest(Word dictionary[], int count){
     printf("Success rate: %.2f%%\n", (float)correct / amount * 100);
 }
 
+//Function that either edits a word or deletes a word in the struct and rewrites the file accordingly
 void EditWords(const char *filename, Word dictionary[], int count){
     char choice;
     char word[N];
