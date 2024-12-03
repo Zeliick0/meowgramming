@@ -8,5 +8,6 @@ int get_length(const char *filename);
 void fillarrays(int *array1, int *array2, int length);
 void sortarray(int *array, int length);
 int distance(int *array1, int *array2, int length);
+int matches(int *array, int length, int num);
 
 #endif
