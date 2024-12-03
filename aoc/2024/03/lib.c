@@ -13,7 +13,13 @@ int is_valid(char *number) {
 
 int total_sum(const char *filename) {
     int sum = 0;
+    char num1[4];
+    char num2[4];
+    char *keyword = "mul(";
 
-
+    FILE *f = fopen(filename, "r");
+    
+    
+    
     return sum;
 }
