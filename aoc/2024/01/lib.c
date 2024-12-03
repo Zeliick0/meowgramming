@@ -64,4 +64,4 @@ int matches(int *array1, int *array2, int length){
 
     return score;
 }
-
+    int lines = 0;
