@@ -30,11 +30,17 @@ int safe_reps(const char *filename) {
                     break;
                 }
             if(current_num > previous_num){
-                if (monotone == 0) monotone = 1;
-                else if (monotone == -1) monotone = 0;
+                if (monotone == 0) {
+                    monotone = 1;
+                }else if (monotone == -1) {
+                    monotone = 0;
+                }
             }else if(current_num < previous_num){
-                if (monotone == 0) monotone = -1;
-                else if (monotone == 1) monotone = 0;
+                if (monotone == 0) {
+                    monotone = -1;
+                }else if (monotone == 1){
+                    monotone = 0;
+                }
             }
             }
             

@@ -2,7 +2,7 @@
 
 int main() {
     
-    const char *filename = "input2.txt";
+    const char *filename = "input.txt";
 
     
     printf("The are %d safe lines\n", safe_reps(filename));
