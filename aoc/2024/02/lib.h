@@ -9,5 +9,6 @@
 
 int is_monotone(int prev, int cur);
 int safe_reps(const char *filename);
+int safeish_reps(const char *filename);
 
 #endif

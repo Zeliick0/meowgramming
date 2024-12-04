@@ -2,6 +2,10 @@
 #define LIB_H
 
 #include <stdio.h>
+#include <string.h>
+#include <strings.h>
+#include <stdlib.h>
+#define buffer 1024
 
 int is_digit(char number);
 int is_valid(char *number);
