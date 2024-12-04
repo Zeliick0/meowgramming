@@ -54,7 +54,7 @@ int total_matches(const char *filename) {
     int word_length = strlen(word);
     int height = get_height(filename);
     
-    char grid[height][width + 1];
+    char grid[height][width];
 
     FILE *f = fopen(filename, "r");
     if (f == NULL){
@@ -62,14 +62,18 @@ int total_matches(const char *filename) {
     }
 
     for (int i = 0; i < height; i++) {
-        if (fgets(grid[i], width + 2,f)){
-            if (grid[i][width] == '\n'){
-                grid[i][width] = '\0';
+        for (int j = 0; j < width; j++) {
+            if (fscanf(f, "%c", &grid[i][j]) != 1) {
+                printf("There was an error with parsing..");
+                fclose(f);
+                return -1;
             }
         }
+        fscanf(f,"\n");
     }
-    fclose(f);
 
+    fclose(f);
+    
     for (int row = 0; row < height; row++) {
         for (int column = 0; column < width; column++) {
             for (int direction = 0; direction < 8; direction++) {

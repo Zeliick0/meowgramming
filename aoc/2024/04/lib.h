@@ -5,7 +5,7 @@
 #include <string.h>
 #include <strings.h>
 #include <stdlib.h>
-#define buffer 64
+#define buffer 1024
 
 int get_width(const char *filename);
 int get_height(const char *filename);
