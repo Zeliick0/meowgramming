@@ -54,18 +54,18 @@ int total_matches(const char *filename) {
     int word_length = strlen(word);
     int height = get_height(filename);
     
-    char *grid = (char *)malloc(height * width * sizeof(char));
-    //char grid[height][width + 2];
+    char grid[height][width + 1];
 
     FILE *f = fopen(filename, "r");
     if (f == NULL){
         perror("There was an error while opening the file");
     }
 
-    char line_buffer[width + 2];
     for (int i = 0; i < height; i++) {
-        if (fgets(grid[i], sizeof(grid[i]),f)){
-            grid[i][strcspn(grid[i], "\n")] = '\0';
+        if (fgets(grid[i], width + 2,f)){
+            if (grid[i][width] == '\n'){
+                grid[i][width] = '\0';
+            }
         }
     }
     fclose(f);
@@ -94,6 +94,5 @@ int total_matches(const char *filename) {
             }
         }
     }
-
     return matches;
 }
