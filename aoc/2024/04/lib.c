@@ -50,8 +50,8 @@ int get_height(const char *filename) {
 int total_matches(const char *filename) {
     int matches = 0;
     char *word = "XMAS";
-    int width = get_width(filename);
     int word_length = strlen(word);
+    int width = get_width(filename);
     int height = get_height(filename);
     
     char grid[height][width];
