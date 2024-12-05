@@ -1,4 +1,5 @@
 #include "lib.h"
+#include <string.h>
 
 int is_digit(char number) {
     return number >= '0' && number <= '9';
@@ -13,44 +14,41 @@ int total_sum(const char *filename) {
 
     while (fgets(input_buffer, sizeof(input_buffer), f)) {
         char *temp = input_buffer;
-        int len = strlen(temp);
         char *occurence;
-        char *num1, *num2;
-        int number1 = 0, number2 = 0;
 
+        while ((occurence = strstr(temp,keyword)) != NULL) {
+            occurence += strlen(keyword);
 
-        while ((occurence = strstr(temp,keyword)) != 0) {
-            if (!is_digit(*occurence)) {
-                occurence += 4;
-            }
-
+            char *num1_start = occurence;
             while (is_digit(*occurence)) {
-                num1 = occurence;
-                num1++;
                 occurence++;
             }
+            char *num1_end = occurence;
 
             if (*occurence == ',') {
                 occurence++;
             }
 
+            char *num2_start = occurence;
             while (is_digit(*occurence)) {
-                num2 = occurence;
-                num2++;
                 occurence++;
             }
+            char *num2_end = occurence;
+            
 
-            if ((*occurence + 1) == ')') {
-                number1 = atoi(num1);
-                number2 = atoi(num2);
-            } else {
-                num1 = 0;
-                num2 = 0;
-            }
-        sum = sum + (number1 * number2);
+            if (*occurence == ')') {
+                char num1[4] = {0};
+                char num2[4] = {0};
+                strncpy(num1, num1_start, num1_end - num1_start);
+                strncpy(num2, num2_start, num2_end - num2_start);
                 
+                int number1 = atoi(num1);
+                int number2 = atoi(num2);
+                
+                sum = sum + (number1 * number2);
+            }
+            temp = occurence + 1;
         }
-
     }
      
     fclose(f);
