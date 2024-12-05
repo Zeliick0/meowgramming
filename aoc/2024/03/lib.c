@@ -31,8 +31,8 @@ int total_sum(const char *filename) {
                 continue;
             }
             
-            char num1[4] = {0};
-            strncpy(num1,num1_start, occurence - num1_start);
+            char num1[10] = {0};
+            strncpy(num1, num1_start, occurence - num1_start);
 
             if (*occurence == ',') {
                 occurence++;
@@ -47,14 +47,17 @@ int total_sum(const char *filename) {
                 continue;
             }
             
-            char num2[4] = {0};
+            char num2[10] = {0};
             strncpy(num2, num2_start, occurence - num2_start);
 
 
             if (*occurence == ')') {
-                int number1 = atoi(num1);
-                int number2 = atoi(num2);
-                sum = sum + (number1 * number2);
+
+                if (strlen(num1) > 0 && strlen(num2) > 0) {
+                    int number1 = atoi(num1);
+                    int number2 = atoi(num2);
+                    sum = sum + (number1 * number2);
+                }
                 }
             temp = occurence + 1;
         }
