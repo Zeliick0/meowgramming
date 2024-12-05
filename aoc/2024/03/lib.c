@@ -12,18 +12,27 @@ int total_sum(const char *filename) {
     char *keyword = "mul(";
     FILE *f = fopen(filename, "r");
 
+
     while (fgets(input_buffer, sizeof(input_buffer), f)) {
         char *temp = input_buffer;
         char *occurence;
 
         while ((occurence = strstr(temp,keyword)) != NULL) {
+            printf("Found keyword %s\n", occurence);
+
             occurence += strlen(keyword);
 
             char *num1_start = occurence;
             while (is_digit(*occurence)) {
                 occurence++;
             }
-            char *num1_end = occurence;
+            if (occurence == num1_start || *occurence != ',') {
+                temp = occurence + 1;
+                continue;
+            }
+            
+            char num1[4] = {0};
+            strncpy(num1,num1_start, occurence - num1_start);
 
             if (*occurence == ',') {
                 occurence++;
@@ -33,20 +42,20 @@ int total_sum(const char *filename) {
             while (is_digit(*occurence)) {
                 occurence++;
             }
-            char *num2_end = occurence;
+            if (occurence == num2_start || *occurence != ')') {
+                temp = occurence + 1;
+                continue;
+            }
             
+            char num2[4] = {0};
+            strncpy(num2, num2_start, occurence - num2_start);
+
 
             if (*occurence == ')') {
-                char num1[4] = {0};
-                char num2[4] = {0};
-                strncpy(num1, num1_start, num1_end - num1_start);
-                strncpy(num2, num2_start, num2_end - num2_start);
-                
                 int number1 = atoi(num1);
                 int number2 = atoi(num2);
-                
                 sum = sum + (number1 * number2);
-            }
+                }
             temp = occurence + 1;
         }
     }
