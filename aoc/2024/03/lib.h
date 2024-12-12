@@ -8,7 +8,6 @@
 #define buffer 1024
 
 int is_digit(char number);
-int is_valid(char *number);
 int total_sum(const char *filename);
 
 #endif

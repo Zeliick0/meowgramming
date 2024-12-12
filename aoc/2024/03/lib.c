@@ -12,8 +12,17 @@ int total_sum(const char *filename) {
     char *keyword = "mul(";
     FILE *f = fopen(filename, "r");
 
+    int i = 0;
+    int c;
 
-    while (fgets(input_buffer, sizeof(input_buffer), f)) {
+    while ((c = fgetc(f)) != EOF) {
+        
+        if (i < buffer - 1) {
+            input_buffer[i++] = c;
+        }
+
+        if (c == '\n' || i >= buffer - 1) {
+        input_buffer[i] = '\0';
         char *temp = input_buffer;
         char *occurence;
 
@@ -31,7 +40,7 @@ int total_sum(const char *filename) {
                 continue;
             }
             
-            char num1[10] = {0};
+            char num1[16] = {0};
             strncpy(num1, num1_start, occurence - num1_start);
 
             if (*occurence == ',') {
@@ -47,20 +56,20 @@ int total_sum(const char *filename) {
                 continue;
             }
             
-            char num2[10] = {0};
+            char num2[16] = {0};
             strncpy(num2, num2_start, occurence - num2_start);
 
 
             if (*occurence == ')') {
-
                 if (strlen(num1) > 0 && strlen(num2) > 0) {
-                    int number1 = atoi(num1);
-                    int number2 = atoi(num2);
-                    sum = sum + (number1 * number2);
-                }
+                int number1 = atoi(num1);
+                int number2 = atoi(num2);
+                sum = sum + (number1 * number2);
+                } 
                 }
             temp = occurence + 1;
         }
+    }
     }
      
     fclose(f);

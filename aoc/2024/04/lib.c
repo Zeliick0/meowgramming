@@ -2,10 +2,10 @@
 #include <stdio.h>
 
 int possible_directions[8][2] = {
-    {0,1}, {0,-1},
-    {1,0}, {-1,0},
-    {1,1}, {1,-1},
-    {-1,1}, {-1,-1},
+    {0,1}, {0,-1}, // Horizontal
+    {1,0}, {-1,0}, // Vertical
+    {1,1}, {1,-1}, // Diagonal up
+    {-1,1}, {-1,-1}, // Diagonal down
 };
 
 int get_width(const char *filename){
