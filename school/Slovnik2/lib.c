@@ -1,10 +1,12 @@
 #include "lib.h"
 
+//Clears out the scanf(stdin) buffer so no unwanted behaviour happens
 void flushInput() {
     int c;
     while ((c = getchar()) != '\n' && c != EOF);
 }
 
+//Converts inputed words for further comparation
 void to_lowercase(char *string) {
     while (*string) {
         if (*string >= 'A' && *string <= 'Z') {
@@ -14,6 +16,9 @@ void to_lowercase(char *string) {
     }
 }
 
+//Loads the file the user wants to work with
+// !!Important since other functions won't work until the file is loaded into the arrays!!
+// !!The file you input has to be in the correct format for parsing to work!!
 int loadDictionary(const char* filename, char czech[][N], char english[][N], int lessons[], int maxWords) {
     FILE *f = fopen(filename, "r");
     if (!f) return 0;
@@ -27,6 +32,7 @@ int loadDictionary(const char* filename, char czech[][N], char english[][N], int
     return count;
 }
 
+//Translates the word, checks both languages so the user can input either a czech or english word
 void Translate(char czech[][N], char english[][N], int count) {
     char word[N];
     printf("Input a word (either Czech or English): \n");
@@ -46,6 +52,8 @@ void Translate(char czech[][N], char english[][N], int count) {
     printf("Word not found.\n");
 }
 
+//Tests the user from a lesson of their choice
+// Prints out results at the end of the test
 void lesson_test(char czech[][N], char english[][N], int lessons[], int count) {
     int lesson, total = 0, correct = 0;
     char answer[N];
@@ -77,6 +85,7 @@ void lesson_test(char czech[][N], char english[][N], int lessons[], int count) {
     }
 }
 
+//Counts words in a lesson, user can input "*" for all words instead of a single lesson
 int wordsInLesson(char czech[][N], int lessons[], int count) {
     char lesson[10];
     int word_count = 0;
@@ -98,7 +107,8 @@ int wordsInLesson(char czech[][N], int lessons[], int count) {
     }
 }
 
-void addWord(const char* filename, int* count, char czech[][N], char english[][N], int lessons[], int maxWords) {
+//Function appends a user-input word to the existing arrays and then rewrites the file to update it
+void addWord(const char *filename, int *count, char czech[][N], char english[][N], int lessons[], int maxWords) {
     if (*count >= maxWords) {
         printf("Dictionary is full.\n");
         return;
@@ -130,6 +140,7 @@ void addWord(const char* filename, int* count, char czech[][N], char english[][N
     printf("Word successfully added.\n");
 }
 
+//Tests the user from random words across all lessons, keeps track of used words with a seperate array that checks if the index is "1" for used, "0" for not used, to not repeat a word
 void randomTest(char czech[][N], char english[][N], int count) {
     int amount, correct = 0;
     char answer[N];
@@ -170,6 +181,9 @@ void randomTest(char czech[][N], char english[][N], int count) {
     printf("\nQuiz complete! Correct answers: %d/%d (%.2f%%)\n", correct, amount, (float)correct / amount * 100);
 }
 
+//Either edits a word or deletes it
+//The word has to be the czech part of the line the user wants to work with
+//After selecting/rewriting the word it rewrites to file to update it
 void EditWords(const char *filename, char czech[][N], char english[][N], int lessons[], int *count) {
     char choice, word[N];
 

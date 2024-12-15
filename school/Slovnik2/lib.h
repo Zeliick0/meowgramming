@@ -1,4 +1,3 @@
-#include <cstdio>
 #ifndef LIB_H
 #define LIB_H
 #define N 255

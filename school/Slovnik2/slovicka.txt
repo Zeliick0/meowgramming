@@ -31,4 +31,3 @@ list;leaf;8;
 koren;root;8;
 haf;woof;9;
 voda;water;4;
-skibidi;toilet;49;

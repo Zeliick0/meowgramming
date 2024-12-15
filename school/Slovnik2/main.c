@@ -18,7 +18,7 @@ int main() {
     while (ext == 0) {
         printf("What do you want to do?\n"
                "1) Load dictionary\n"
-               "2) Translate a word\n"
+               "2) Translate a word (CZ->EN / EN->CZ)\n"
                "3) Test from a lesson\n"
                "4) Count words\n"
                "5) Add a word\n"
