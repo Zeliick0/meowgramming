@@ -10,9 +10,9 @@ int main() {
     printArray(array, N);
     
     even = evenNumbers(array, evenNums);
-    evenNums = (int*) malloc(even * sizeof(int));
     printArray(evenNums, even);
 
     free(array);
+    free(evenNums);
     return 0;
 }

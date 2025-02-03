@@ -18,8 +18,16 @@ int evenNumbers(int *array, int *evenNums) {
     int even = 0;
     for (int i = 0; i < N; i++) {
         if (array[i] % 2 == 0) {
-            evenNums[even] = array[i];
             even++;
+        }
+    }
+
+    evenNums = (int*) malloc(even * sizeof(int));
+    
+    int index = 0;
+    for (int i = 0; i < N; i ++) {
+        if (array[i] % 2 == 0) {
+            evenNums[index++] = array[i];
         }
     }
     return even;
