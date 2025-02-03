@@ -1,5 +1,4 @@
 #include "headers/lib.h"
-#include <stdio.h>
 
 int main() {
     int num = 0;
