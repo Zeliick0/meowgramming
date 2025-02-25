@@ -7,12 +7,17 @@ int main() {
 
     array = (int*) malloc(N * sizeof(int));
     fillArray(array);
+    printf("Initial array: \n");
     printArray(array, N);
     
-    even = evenNumbers(array, evenNums);
-    printArray(evenNums, even);
-
+    even = evenNumbers(array, &evenNums);
+    
+    if (evenNums) {
+        printf("\nArray with even numbers: \n");
+        printArray(evenNums, even);
+        free(evenNums);
+    }
+    
     free(array);
-    free(evenNums);
     return 0;
 }

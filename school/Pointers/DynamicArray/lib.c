@@ -10,11 +10,12 @@ void fillArray(int *array) {
 
 void printArray(int *array, int len) {
     for (int i = 0; i < len; i++) {
-        printf("The number %d is %d\n", i + 1, array[i]);
+        printf("|%d|", array[i]);
     }
+    printf("\n");
 }
 
-int evenNumbers(int *array, int *evenNums) {
+int evenNumbers(int *array, int **evenNums) {
     int even = 0;
     for (int i = 0; i < N; i++) {
         if (array[i] % 2 == 0) {
@@ -22,12 +23,12 @@ int evenNumbers(int *array, int *evenNums) {
         }
     }
 
-    evenNums = (int*) malloc(even * sizeof(int));
+    *evenNums = (int*) malloc(even * sizeof(int));
     
     int index = 0;
     for (int i = 0; i < N; i ++) {
         if (array[i] % 2 == 0) {
-            evenNums[index++] = array[i];
+            (*evenNums)[index++] = array[i];
         }
     }
     return even;

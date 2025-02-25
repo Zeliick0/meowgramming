@@ -8,7 +8,7 @@
 
 void fillArray(int *array);
 void printArray(int *array, int len);
-int evenNumbers(int *array, int *evenNums);
+int evenNumbers(int *array, int **evenNums);
 void dynamicArray(int *array);
 
 #endif 

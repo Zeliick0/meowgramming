@@ -1,7 +1,7 @@
 #include "headers/lib.h"
 
 void flush() {
-    int c;
+ q   int c;
     while ((c = getchar()) != '\n' && c != EOF);
 }
 
