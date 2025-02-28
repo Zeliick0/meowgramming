@@ -11,6 +11,7 @@
     "start": "nodemon app.mjs"
   },
   "dependencies": {
+    "axion": "^0.1.0",
     "axios": "^1.7.9",
     "express": "^4.21.2",
     "nodemon": "^3.1.9"
