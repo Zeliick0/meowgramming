@@ -1,0 +1,35 @@
+#include "headers/lib.h"
+
+void fillArray(int *array) {
+    srand(time(NULL));
+
+    for (int i = 0; i < N; i++) {
+        array[i] = (rand() % 10) + 1;
+    }
+}
+
+void printArray(int *array, int len) {
+    for (int i = 0; i < len; i++) {
+        printf("|%d|", array[i]);
+    }
+    printf("\n");
+}
+
+int evenNumbers(int *array, int **evenNums) {
+    int even = 0;
+    for (int i = 0; i < N; i++) {
+        if (array[i] % 2 == 0) {
+            even++;
+        }
+    }
+
+    *evenNums = (int*) malloc(even * sizeof(int));
+    
+    int index = 0;
+    for (int i = 0; i < N; i ++) {
+        if (array[i] % 2 == 0) {
+            (*evenNums)[index++] = array[i];
+        }
+    }
+    return even;
+}
