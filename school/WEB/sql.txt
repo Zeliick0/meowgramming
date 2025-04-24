@@ -1,0 +1,20 @@
+CREATE TABLE IF NOT EXISTS vyrobci (
+    id_v INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    nazev_v VARCHAR(50)
+);
+
+CREATE TABLE IF NOT EXISTS auta (
+    id_a INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    nazev_a VARCHAR(50),
+    cena FLOAT(10,2),
+    vyrobce INT NOT NULL,
+    FOREIGN KEY (vyrobce) REFERENCES vyrobci(id_v)
+);
+
+SELECT * FROM auta JOIN vyrobci on auta.vyrobce = vyrobci.id_v;
+
+INSERT INTO vyrobci (nazev_v) VALUES ("Skoda");
+INSERT INTO auta (nazev_a, cena, vyrobce) VALUES ("Octavia", 15000, 1);
+
+
+CREATE TABLE 

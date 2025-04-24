@@ -2,6 +2,8 @@
 #include <string>
 using namespace std;
 
+Person::Person() {}
+
 Person::Person(string n, int a) {
     name = n;
     age = a;
@@ -11,7 +13,7 @@ void Person::setName(){
     string iName;
     cout << "Input name: " << endl;
     cin >> iName;
-
+  
     this->name = iName;
 }
 
