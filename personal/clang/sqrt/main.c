@@ -1,7 +1,4 @@
 #include <stdio.h>
-
-
-
 float squarert(float x){
     float xa = x;
     float xb = xa / 2;

@@ -13,6 +13,11 @@ void fibo(int repeats) {
 
 }
 
+int fibo2 (int n) {
+    if (n == 0) {
+        return 0;
+    }
+}
 
 int main() {
     int repeats;
