@@ -1,4 +1,6 @@
 package todo
+import todo.savingFunctions.*
+import todo.taskFunctions.*
 import java.io.File
 
 fun main() {
@@ -17,10 +19,10 @@ fun main() {
         choice = readln().toInt();
 
         when (choice) {
-            1 -> addTask();
+            1 -> addTask(mainFile);
             2 -> listTasks();
-            3 -> changeStatus();
-            4 -> deleteTask();
+            3 -> changeStatus(mainFile);
+            4 -> deleteTask(mainFile);
             5 -> exit++;
             else -> println("Invalid option");
         }

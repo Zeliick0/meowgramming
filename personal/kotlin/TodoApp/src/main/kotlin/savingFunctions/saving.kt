@@ -1,15 +1,13 @@
-package todo
+package todo.savingFunctions
+import todo.taskFunctions.*
 import java.io.File
-import kotlinx.serialization.*
 import kotlinx.serialization.json.*
-
-val file = File("src/main/resources/tasks.json");
 
 fun taskToJson(task: Task): String {
     return """{"id":${task.id},"name":"${task.name}","description":"${task.description}","status":"${task.status}"}"""
 }
 
-fun tasksToJson(tasks: List<Task>): String {
+fun taskListToJson(tasks: List<Task>): String {
     return tasks.joinToString(
         prefix = "[\n",
         postfix = "\n]",
@@ -19,21 +17,11 @@ fun tasksToJson(tasks: List<Task>): String {
     }
 }
 
-
 fun jsonToTask(json: String): List<Task> {
     return Json.decodeFromString<List<Task>>(json);
 }
 
-fun taskList(): List<Task> {
-    if (!file.exists() || file.readText().isBlank()) {
-        return emptyList();
-    }
-
-    val taskData = file.readText();
-    return jsonToTask(taskData);
-}
-
-fun saveToJson(task: Task) {
+fun saveToJson(task: Task, file: File) {
     var data = taskToJson(task);
     
     if (!file.exists() || file.readText().isBlank()) {
