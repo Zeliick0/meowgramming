@@ -12,13 +12,6 @@ data class Task(
     var status: Status = Status.PENDING
 )
 
-data class doneTask(
-    var id: Int,
-    val name: String,
-    val description: String,
-    var status: Status
-)
-
 enum class Status {
     PENDING,
     IN_PROGRESS,
